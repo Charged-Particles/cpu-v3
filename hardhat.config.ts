@@ -156,7 +156,8 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      mainnet: process.env.ETHERSCAN_API_KEY ?? '',
+      mainnet: process.env.ETHERSCAN_APIKEY ?? '',
+      sepolia: process.env.ETHERSCAN_APIKEY ?? '',
       polygon: process.env.POLYGONSCAN_API_KEY ?? '',
       polygonMumbai: process.env.POLYGONSCAN_API_KEY ?? '',
       baseSepolia: process.env.BASESCAN_APIKEY ?? '',
