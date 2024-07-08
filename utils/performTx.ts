@@ -1,4 +1,5 @@
 import { ContractTransactionReceipt, ContractTransactionResponse, EventLog, Log } from 'ethers';
+import { log } from './log';
 
 export const performTx = async (tx: ContractTransactionResponse, msg: string) => {
   const rc: ContractTransactionReceipt | null = await tx.wait();
@@ -14,6 +15,6 @@ export const performTx = async (tx: ContractTransactionResponse, msg: string) =>
       }
     }
 
-    // console.log(msg);
+    log(msg);
   }
 };

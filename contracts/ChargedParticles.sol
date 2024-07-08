@@ -44,6 +44,11 @@ import {ISmartAccountController} from "./interfaces/ISmartAccountController.sol"
 import {IDynamicTraits} from "./interfaces/IDynamicTraits.sol";
 import {SmartAccountTimelocks} from "./extensions/SmartAccountTimelocks.sol";
 
+// Mode SFS (Fee Sharing)
+interface ISFS {
+    function register(address _recipient) external returns (uint256 tokenId);
+}
+
 
 contract ChargedParticles is IChargedParticles, Ownable, ReentrancyGuard {
   using NftTokenInfo for address;
@@ -69,15 +74,19 @@ contract ChargedParticles is IChargedParticles, Ownable, ReentrancyGuard {
 
   constructor(
     address registry,
-    address implementation
+    address implementation,
+    address sfsRegistry
   )
     Ownable()
     ReentrancyGuard()
   {
-
     erc6551registry[defaultRegistry] = registry;
     defaultAccountImplementation = implementation;
     defaultSalt = bytes32('CPU-V3');
+
+    // Mode SFS Registry
+    ISFS sfsContract = ISFS(sfsRegistry);
+    sfsContract.register(msg.sender); // Registers this contract and assigns the NFT to the deployer of this contract
   }
 
   function getSmartAccountAddress(address contractAddress, uint256 tokenId) external view override virtual returns (address) {

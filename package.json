@@ -17,7 +17,7 @@
     "coverage": "yarn clean-test && hardhat --show-stack-traces coverage --temp coverage_build && yarn clean-test",
     "gas": "REPORT_GAS=true hardhat test",
     "gen-docs": "solidity-docgen -i contracts -o docs",
-    "deploy-cpu-only": "hardhat deploy --tags Setup_CPU,Setup_SAC_EX1 --network"
+    "deploy-cpu": "hardhat deploy --tags Setup_CPU --network"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
@@ -40,9 +40,13 @@
     "hardhat-deploy": "^0.11.34",
     "hardhat-deploy-ethers": "^0.4.1",
     "hardhat-gas-reporter": "^1.0.8",
+    "lodash": "^4.17.21",
     "solidity-coverage": "^0.8.0",
     "ts-node": ">=8.0.0",
     "typechain": "^8.3.1",
     "typescript": ">=4.5.0"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.17.6"
   }
 }
