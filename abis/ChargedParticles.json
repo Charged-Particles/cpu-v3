@@ -10,6 +10,11 @@
         "internalType": "address",
         "name": "implementation",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "sfsRegistry",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
